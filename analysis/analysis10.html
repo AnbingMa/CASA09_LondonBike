@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BICYCLE UNDER POST_COVID</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_analysis.css">
+    <link rel="icon" href="../img/LOGO1.png" type="image/x-icon"/>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#home" class="logo">Bicycle & COVID-19</a>
+      <div class="logoimg">
+        <img src="../img/LOGO1.png" alt="logo"  width = "100px" height = "45px">
+      </div>
+
+      <ul class="nav">
+        <li> <a  href="../home.html">Home</a></li>
+        <li> <a class="active" href="../home.html#analysis">Analysis</a></li>
+        <li> <a href="../map.html">Map</a></li>
+      </ul>
+    </div>
+
+    <div class="story-container">
+      <div class="heading"><p>Daily Flow/duration</p></div>
+      <div class="subheading"><p>Changed travel time on a typical week in three years</p></div>
+      <div class="content" id="content7">
+        <p>The duration of trips on weekdays and weekends follows the same pattern as the number of trips.</p>
+        <p>However, the peak riding time on weekday afternoon rush hours in 2020 topped that of 2019, setting a new record. And the size is larger on weekends since the highest total riding hours during peak time on weekends is 15 million minutes compared to only 5 million minutes on weekdays. In addition, the Peak riding hours on weekend in 2020 is more than five times higher than in pre-pandemic 2019, which further indicates the increasing demand and usage of the public cycle during the pandemic time.</p>
+    <br></br>
+
+      </div>
+      <img id="photochange1" src="../img/Fig 4.daily-journey-on-weekday-duration.png" alt="pic" width = "600px" height = "350px">
+    </div>
+
+      <div class="next">
+        <a href="analysis11.html">
+        <img src="../img/nextButton3.png" alt="next">
+        </a>
+      </div>
+
+
+            <div class="myStorynav" class="storynav">
+              <a href="../home.html#analysis" id="bullet1">
+              <img src="../img/timeBullet1.png"></a>
+              <a   href="analysis1.html" id="bullet2">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis2.html" id="bullet3">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis3.html" id="bullet4">
+              <img src="../img/timeBullet1.png"></a>
+              <a  href="analysis4.html" id="bullet5">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis5.html" id="bullet6">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis6.html" id="bullet7">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis7.html" id="bullet8">
+              <img src="../img/timeBullet1.png"></a>
+              <a   href="analysis8.html" id="bullet9">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis9.html" id="bullet10">
+              <img src="../img/timeBullet1.png"></a>
+              <a class="active" href="analysis10.html" id="bullet11">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis11.html" id="bullet12">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis12.html" id="bullet13">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis13.html" id="bullet14">
+              <img src="../img/timeBullet1.png"></a>
+              <a href="analysis14.html" id="bullet15">
+              <img src="../img/timeBullet1.png"></a>
+            </div>
+
+    </div>
+  </body>
+  <script language =javascript >
+
+  var i=0;
+  var arr=new Array();
+
+  arr[0]="../img/Fig 4.daily-journey-on-weekday-duration.png";
+  arr[1]="../img/Fig 4.1.daily-journey-on-weekend-duration.png";
+
+  function photochange1()
+  {
+      var photo=document.getElementById("photochange1");
+      if (i==arr.length-1)
+      {
+          i=0;
+      }
+      else
+      {
+          i+=1;
+      }
+      photo.src=arr[i];
+  }
+
+  setInterval("photochange1()",2000);
+
+  </script>
+
+
+</html>

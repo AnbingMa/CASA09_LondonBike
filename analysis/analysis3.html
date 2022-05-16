@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BICYCLE UNDER POST_COVID</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_analysis.css">
+    <link rel="icon" href="img/LOGO1.png" type="image/x-icon"/>
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#home" class="logo">Bicycle & COVID-19</a>
+      <div class="logoimg">
+        <img src="../img/LOGO1.png" alt="logo"  width = "100px" height = "45px">
+      </div>
+
+      <ul class="nav">
+        <li> <a  href="../home.html">Home</a></li>
+        <li> <a class="active" href="../home.html#analysis">Analysis</a></li>
+        <li> <a href="../map.html">Map</a></li>
+
+      </ul>
+    </div>
+
+      <div class="next">
+        <a href="analysis4.html">
+        <img src="../img/nextButton3.png" alt="next">
+        </a>
+      </div>
+
+      <div class="myStorynav" class="storynav">
+        <a href="../home.html#analysis" id="bullet1">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis1.html" id="bullet2">
+        <img src="../img/timeBullet1.png"></a>
+        <a  href="analysis2.html" id="bullet3">
+        <img src="../img/timeBullet1.png"></a>
+        <a class="active" href="analysis3.html" id="bullet4">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis4.html" id="bullet5">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis5.html" id="bullet6">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis6.html" id="bullet7">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis7.html" id="bullet8">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis8.html" id="bullet9">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis9.html" id="bullet10">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis10.html" id="bullet11">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis11.html" id="bullet12">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis12.html" id="bullet13">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis13.html" id="bullet14">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis14.html" id="bullet15">
+        <img src="../img/timeBullet1.png"></a>
+      </div>
+
+      <div class="story-container">
+    	  <div class="heading"><p>Demand on different tubes in  2019 vs 2020</p></div>
+    	  <div class="subheading"><p>Travel purpose on 2019 vs 2020 </p></div>
+        <div class="content" id="content3">
+        <p>In 2020/21 there was an increase in the share of cycling duration associated with private transport trips (increasing from 0 percent to 3 percent) and also as part of walking trips (O percent to 11 percent) meaning that although the majority of cycling duration was still done as cycle all the way trips, the proportion decreased from 98 percent in 2019/20 to 84 percent in 2020/21. </p>
+        <p>The figure shows that the purposes for which London residents cycled have changed as a result of the pandemic. The share of cycling duration associated with commuting trips decreased from just less than half (45 percent) to 29 percent and for other work-related trips, it decreased from 14 percent to just 3 percent. The pattern is also the same as walking for shopping or personal business and leisure trips, which both saw an increase in the share of cycling duration (from 7 percent to 19 percent for shopping/personal business and from 26 percent to 42 percent for leisure). Showing that the reduction in commuter cycling as a result of workplace restrictions has been compensated by an increase in home-based leisure trips (a "purpose shift').</p>
+        </div>
+
+        <!-- <div class="img3_title">
+          <p>Share of cycling stage duration by associated trip journey purpose, London residents aged 17+, LTDS, 2019/20-2020/21</p>
+        </div> -->
+
+    	  <div id="img3-1">
+            </div>
+    	</div>
+
+    <script type="text/javascript">
+    Highcharts.chart("img3-1", {
+        chart: {
+        	height: 430,
+           width: 700,
+           backgroundColor: false,
+            type: 'column'
+        },
+        title: {
+            text: 'Share of cycling stage duration by associated trip journey purpose, London residents aged 17+, LTDS, 2019/20-2020/21',
+            textStyle: {
+              color: '#f8f9fa'
+            }
+
+        },
+        subtitle: {
+            text: 'Source: <a href="https://cycling.data.tfl.gov.uk">TFL</a>'
+        },
+        xAxis: {
+            categories: [
+    'Usual workplace',
+    'Other work related',
+    'Education',
+    'Shopping and personal business',
+    'Leisure',
+    'Other'
+            ]
+        },
+        yAxis: [{
+            min: 0,
+            title: {
+                text: 'Share of cycling duration'
+            }
+
+        }],
+        legend: {
+            shadow: false,
+            textStyle: {
+  color: '#fff'
+  // ...
+}
+        },
+        tooltip: {
+            shared: true
+        },
+
+        plotOptions: {
+            column: {
+                grouping: false,
+                shadow: false,
+                borderWidth: 0
+            }
+        },
+
+        series: [{
+            name: '2019/20',
+            color: 'rgba(186,60,61,.9)',
+
+            data: [0.45,0.14,0.03,0.07,0.26,0.05
+    ],
+            pointPadding: 0.3,
+            pointPlacement: 0.2
+        }, {
+            name: '2020/2021',
+            color: 'rgba(248,161,63,1)',
+            data: [0.2,0.03,0.02,0.19,0.42,0.05
+    ],
+            pointPadding: 0.4,
+            pointPlacement: 0.2
+        }]
+    });
+
+    </script>
+    </div>
+  </body>
+</html>

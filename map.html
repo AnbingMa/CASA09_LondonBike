@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<head>
+	<title>The interactive bike station map</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel='stylesheet' id='font-css'  href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' type='text/css' media='all' />
+	<link rel='stylesheet' href='./css/mapStyle.css' type='text/css'/>
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="icon" href="./img/LOGO1.png" type="image/x-icon"/>
+	<script src="https://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+	<script src="https://cdn.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+	<script src="https://cdn.highcharts.com.cn/highcharts/modules/series-label.js"></script>
+	<script src="https://cdn.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+	<script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+	<script src="https://cdn.highcharts.com.cn/highcharts/themes/dark-unica.js"></script>
+</head>
+<body>
+<div class="navbar">
+	<a href="home.html" class="logo">Bicycle & COVID-19</a>
+	<div class="logoimg">
+		<img src="./img/LOGO1.png" alt="logo"  width = "100px" height = "45px">
+	</div>
+	<ul class="nav">
+		<li> <a href="./home.html">Home</a></li>
+		<li> <a href="./home.html#analysis">Analysis</a></li>
+		<li> <a  class="active" href="../map.html">Map</a></li>
+		<!-- <li> <a href="#contact">Contact</a></li> -->
+	</ul>
+</div>
+<div id='wrapper'>
+    <div id='map-canvas'></div>
+	<div id="titleHeader">
+		<h1 class="title">The interactive bike station information map</h1>
+	</div>	
+    <div id="displayWrapper">
+     		<div><span id="stationNum">0</span> stations returned</div>
+    </div>
+	<div id="selectMenu">
+			<p class="menuTitle0">Step 1:<br/>Please select a year:</p>
+			<select id ="menuBox1">
+				<option value="1">2019</option>
+				<option value="2">2020</option>
+				<option value="3">2021</option>
+			</select><br/>
+			<p class="menuTitle1">Step 2:<br/>Please select a month:</p>
+			<select id ="menuBox2">
+				<option value="1">01</option>
+				<option value="2">02</option>
+				<option value="3">03</option>
+				<option value="4">04</option>
+				<option value="5">05</option>
+				<option value="6">06</option>
+				<option value="7">07</option>
+				<option value="8">08</option>
+				<option value="9">09</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+			</select><br/>
+			<p class="menuTitle2">Step 3:<br/>Click anywhere on the map to<br/>display the pattern of bike usage.</p><br/>
+			<p class="menuTitle3">Step 4:<br/>Click on the stations icons to<br/>view details of stations.</p><br/>
+			<p class="note">Notes:<br/>1. Areas of circles represents the number of bikes rented from this station.<br/>2. Colors of circles represents total travel time</p>
+
+			 <!-- <button class="button" onclick="getDate()">Confirm</button> -->
+		</div>
+	<div id="container1"></div>
+	<button id="closeButton" onclick="changeID()">Hide</button>
+	<button id="showButton" onclick="changeIDback()">Show</button>
+	<div id="container2"></div>
+</div>
+<!-- The Javascript from external websites gets Loaded Here -->
+
+<!-- Task 2.1:  Load jQuery here (below this line) -->
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyBsSi7QjZUhxupJiaBf3TNIytUOKtkwYys"> </script>
+<script type='text/javascript' src='http://dev.spatialdatacapture.org/xdate/xdate.js'></script>
+<script type='text/javascript' src='./js/mapStyle.js'></script>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.10.2.min.js'></script>
+
+<!-- The Javascript gets loaded here -->
+<script type="text/javascript">
+	var map;
+	var markerArray = [];
+	var stationCircleArray = [];
+	var dataArray = [];
+	var info_window = new google.maps.InfoWindow({maxWidth: 700});
+
+	$(document).ready(function() {
+
+	
+		function initialize() {
+			
+			// Task 3.4 - Make the map look pretty
+			
+			var mapOptions = {
+				center: new google.maps.LatLng(51.514756, -0.104345),
+				zoom: 14,
+				styles: sliver,
+
+			};
+			
+			// Task 3.2 - Write the map into our DIV element
+			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+			var transitLayer = new google.maps.TransitLayer();
+			transitLayer.setMap(map);
+
+			google.maps.event.addListener(map, 'click', function() {
+				var bounds = map.getBounds();
+				console.log("SW: " + bounds.getSouthWest() + " NE: " + bounds.getNorthEast());
+				console.log("Center: " + map.getCenter().lat() + ", " +  map.getCenter().lng());
+				getData(map.getCenter().lat(), map.getCenter().lng());
+			});
+		}
+
+		function getData(lat, lng){
+			var lat = lat.toFixed(2); 
+			var lng = lng.toFixed(3);
+			var year = getYear();
+			var mon = getMonth();
+			console.log("Getting Data: " + lat + ", " + lng );
+			console.log(year,mon);
+			setAllMap(null);
+			stationCircleArray = [];
+			markerArray = [];
+
+			// Task 4.1 - Edit this variable so that it points to our API Look at http://dev.spatialdatacapture.org:8870 for the values you need
+			var url = "http://dev.spatialdatacapture.org:8722/data/"+lat+"/"+lng+"/800"+"/"+year+"-"+mon+"-01";
+			console.log(url);
+			$.getJSON( url , function( data ) {
+				
+				// Task 4.2 -- Add a loop  Make sure you end it as well.  -- Don't uncomment this line
+					console.log(data);
+					if(data.length == 0){
+						alert("Oops! The data for this month is not available, please select other months.")
+					}
+					var i=0;
+					var durationArray = [];
+					$.each(data, function(k,v){
+
+							var latLng = new google.maps.LatLng(v.coords.y, v.coords.x);
+							dataArray.push(latLng);
+			
+							durationArray.push(v.total_duration);
+							// console.log(durationArray);
+							var d_Max = Math.max.apply(Math, durationArray);
+							var d_Min = Math.min.apply(Math, durationArray);
+							// console.log(d_Max,d_Min);
+							var d_Normalization = durationArray.map(function(x){ 
+								let y = (parseInt(x) - d_Min) / (d_Max - d_Min);
+								return y
+							});
+							// console.log(i);
+							// console.log(d_Normalization[i]);
+							// console.log(latLng);
+							var color = getColor(d_Normalization[i]);
+							// console.log(color);
+
+							var marker = new google.maps.Marker({
+		     				 	position: latLng, 
+		     				    icon: "./img/bike_final.png",
+		     				 	stationInfo: v.pid			
+		     				 })
+
+							var stationCircle = new google.maps.Circle({
+								strokeColor: "rgb(252,254,189)",
+      							strokeOpacity: 0.6,
+     							strokeWeight: 0.2,
+      							fillColor: color,
+      							fillOpacity: 0.6,
+      							map,
+      							center: latLng,
+      							radius: v.total_flows/6
+   							});
+
+							// var url2 = "http://dev.spatialdatacapture.org:8722/station_info/"+this.stationInfo+"/"+ mon;
+
+							google.maps.event.addListener(marker, 'click', function(content) {
+								return function(){
+									info_window.setContent("");
+									var year = getYear();
+									var mon = getMonth();
+									console.log(year,mon);
+									console.log(this.stationInfo)
+									map.setCenter(new google.maps.LatLng(v.coords.y, v.coords.x));
+									console.log("http://dev.spatialdatacapture.org:8722/station_info/"+this.stationInfo+"/"+year+"-"+mon+"-01")
+
+									$.getJSON("http://dev.spatialdatacapture.org:8722/station_info/"+this.stationInfo+"/"+year+"-"+mon+"-01", function( data ) {
+										// var dateTaken = new XDate((data[0].mon * 1000)).toString("MMM d, yyyy");
+										// console.log(data[0]);
+										var content = "<b>Station ID: </b><br/>" +v.pid+ "<br/> <br/><b>Station_Name:</b><br/> " + data[0].station_name.replaceAll("+", " ") +"<br/> <br/><b>Date:</b><br/> " + data[0].mon.replaceAll("+", " ").slice(0,4)+"-"+mon +"<br/> <br/><b>Station_Total_Flows:</b><br/> " + data[0].total_flows+  "<br/> <br/><b>Station_Total_Travel_Time:</b><br/> " + parseInt(data[0].total_duration/3600)+"h";
+
+										// + "<br/> <br/><b>Location:</b><br/> "+ v.coords.y + ", " + v.coords.x
+
+								    	info_window.setContent(content);	
+								    });
+					
+								    info_window.open(map,this);
+								}
+							}(""));
+
+							google.maps.event.addListener(marker, 'click', function(content) {
+								return function(){
+									// console.log(this.stationInfo);
+									// console.log("http://dev.spatialdatacapture.org:8722/dataForEchart/"+this.stationInfo);
+
+									$.getJSON("http://dev.spatialdatacapture.org:8722/dataForEchart/"+this.stationInfo, function( data ) {
+										console.log(data.length);
+										console.log(data[0].total_flows);
+
+										var flowArray = [];
+										var travelTimeArray = [];
+										for(i=0;i<data.length;i++){
+											flowArray.push(data[i].total_flows);
+											travelTimeArray.push(parseInt(data[i].total_duration/3600));
+											// console.log(data[i].total_flows);
+										}
+										console.log(flowArray);
+										console.log(travelTimeArray);
+
+										var options1 = {
+        								    chart: {
+    										    type: 'line',
+												backgroundColor: "rgba(0,0,0,0.75)"
+    										},
+    										title: {
+    										    text: 'Travel Flows & Travel Time'
+    										},
+    										subtitle: {
+    										    text: ''
+    										},
+    										xAxis: {
+    										    categories: ['19-04','19-05','19-06','19-07','19-08','19-09','19-10','19-11','19-12','20-01','20-02','20-03','20-04','20-05','20-06','20-07','20-08','20-09','20-10','20-11','20-12','21-01','21-02','21-03','21-04','21-05','21-06','21-07',]
+    										},
+    										yAxis: [{ // Primary yAxis
+    										    labels: {
+    										        
+    										        style: {
+    										            color: Highcharts.getOptions().colors[1]
+    										        }
+    										    },
+    										    title: {
+    										        text: 'Travel Flows',
+    										        style: {
+    										            color: Highcharts.getOptions().colors[1]
+    										        }
+    										    }
+    										}, { // Secondary yAxis
+    										    title: {
+    										        text: 'Travel Time',
+    										        style: {
+    										            color: Highcharts.getOptions().colors[2]
+    										        }
+    										    },
+    										    labels: {
+    										        format: '{value} h',
+    										        style: {
+    										            color: Highcharts.getOptions().colors[2]
+    										        }
+    										    },
+    										    opposite: true
+    										}],
+    										plotOptions: {
+    										    line: {
+    										        dataLabels: {
+    										            // 开启数据标签
+    										            enabled: false          
+    										        },
+    										        // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+    										        enableMouseTracking: true
+    										    }
+    										},
+    										series: [{
+    										    name: 'Total Flows',
+    										    data: flowArray,
+												color: Highcharts.getOptions().colors[1],
+    										}, {
+    										    name: 'Total Travel Time',
+    										    data: travelTimeArray,
+												yAxis: 1,
+    											color: Highcharts.getOptions().colors[2],   
+												tooltip: {
+            										valueSuffix: ' h'
+        										}
+    										}]
+        								};
+        								// 图表初始化函数
+        								var chart1 = Highcharts.chart('container1', options1);
+										// var chart2 = Highcharts.chart('container2', options2);
+									});
+								}
+							}(""));
+
+							stationCircleArray.push(stationCircle);
+							markerArray.push(marker);
+							i++;
+							// durationArray = [];
+
+					});
+
+				// Task 4.3 -- Write the number of rows returned into a element.
+
+      			$("#stationNum").html(data.length);
+      			setAllMap(map);
+			});
+		}
+	
+		// Task 3.1 - Start the map using a function
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		// Task 6 --  Make the markers display on map load.
+	});
+
+	//  ******************* FUNCTIONS TO USE FOR THE MAP YOU DON"T NEED TO EDIT ANYTHING BELOW THIS LINE **************************************************
+	
+	// function getColor(i){
+	// 	var color;
+	// 	if(i<0.1){
+	// 		color = "rgb(252,254,189)";
+	// 	}else if(i>0.1 && i<0.2){
+	// 		color = "rgb(235,248,263)";
+	// 	}else if(i<0.2 && i<0.3){
+	// 		color = "rgb(206,234,263)";
+	// 	}else if(i>0.3 && i<0.4){
+	// 		color = "rgb(185,221,159)";
+	// 	}else if(i>0.4 && i<0.5){
+	// 		color = "rgb(163,213,157)";
+	// 	}else if(i>0.5 && i<0.6){
+	// 		color = "rgb(136,204,149)";
+	// 	}else if(i>0.6 && i<0.7){
+	// 		color = "rgb(113,196,151)";
+	// 	}else if(i>0.7 && i<0.8){
+	// 		color = "rgb(98,179,144)";
+	// 	}else if(i>0.8 && i<0.9){
+	// 		color = "rgb(82,169,139)";
+	// 	}else{
+	// 		color = "rgb(75,163,136)";
+	// 	}
+	// 	return color;	
+	// }
+
+	function changeID(){
+		document.getElementById('container1').id = 'container1_close'
+	}
+
+	function changeIDback(){
+		document.getElementById('container1_close').id = 'container1'
+	}
+
+
+	function getColor(i){
+		var color;
+		if(i<0.3){
+			color = "rgb(227,184,184)";
+		}else if(i<0.3 && i<0.6){
+			color = "rgb(222,158,150)";
+		}else if(i>0.6 && i<0.8){
+			color = "rgb(206,91,83)";
+		}else{
+			color = "rgb(184,38,44)";
+		}
+		return color;	
+	}
+
+	// function getColor(i){
+	// 	var color;
+	// 	if(i<0.3){
+	// 		color = "rgb(252,254,189)";
+	// 	}else if(i<0.3 && i<0.6){
+	// 		color = "rgb(121,185,118)";
+	// 	}else if(i>0.6 && i<0.8){
+	// 		color = "rgb(98,179,144)";
+	// 	}else{
+	// 		color = "rgb(75,163,136)";
+	// 	}
+	// 	return color;	
+	// }
+
+
+	function getYear(){
+		var select = document.getElementById("menuBox1");
+		var index = select.selectedIndex;
+		var result = select.options[index].text; // choose the text
+		return result
+		// console.log(mon);
+	}
+
+	function getMonth(){
+		var select = document.getElementById("menuBox2");
+		var index = select.selectedIndex;
+		var result = select.options[index].text; // choose the text
+		return result
+		// console.log(mon);
+	}
+
+	function createMarkers(){
+		var marker = new google.maps.Marker({
+  			position: latLng 				
+  		});
+	}
+
+	function setAllMap(map) {
+		for (var i = 0; i < markerArray.length; i++) {
+			stationCircleArray[i].setMap(map);
+			markerArray[i].setMap(map);
+		}
+	}
+
+	function clearMarkers() {
+		setAllMarkers(null);
+	}
+
+	String.prototype.replaceAll = function(str1, str2, ignore) {
+    	return decodeURIComponent( this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2) );
+	} 
+ 
+
+</script>
+</body>
+</html>

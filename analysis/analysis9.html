@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BICYCLE UNDER POST_COVID</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_analysis.css">
+    <link rel="icon" href="../img/LOGO1.png" type="image/x-icon"/>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#home" class="logo">Bicycle & COVID-19</a>
+      <div class="logoimg">
+        <img src="../img/LOGO1.png" alt="logo"  width = "100px" height = "45px">
+      </div>
+
+      <ul class="nav">
+        <li> <a  href="../home.html">Home</a></li>
+        <li> <a class="active" href="../home.html#analysis">Analysis</a></li>
+        <li> <a href="../map.html">Map</a></li>
+
+      </ul>
+    </div>
+
+    <div class="story-container">
+      <div class="heading"><p>Daily Flow/duration</p></div>
+      <div class="subheading"><p>Changed flow on a typical week in three years</p></div>
+      <div class="content" id="content7">
+        <p>Considering the usage of cycling will be different on the weekday and weekends, a typical week was chosen in three years to visualize the various distributions. The flows and durations for the weekday are summed up and divided by five days to get the mean value that represents a typical weekday. And the same for the weekend.
+        </p>
+        <p>The weekend flow shows a significantly different pattern than the weekday. The rush hour peaks are still prominent on the weekends which increases fast between lunch and dinner time, from 12:00 to 17:00, while the peak travel time on weekdays is during commute time.
+        </p>
+        <p>The journeys on weekends show that the highest number of flows happened in 2020 and then 2021, suggesting the increasing demand for cycling during and post the pandemic. The number of weekend travels in 2020 is more than twice that of 2019. This may be because cycling has become a popular choice for urban travel to avoid being infected throughout the epidemic.
+        </p>
+      <br></br>
+
+      </div>
+      <img id="photochange1" src="../img/Fig 3.daily-journey-on-weekday-flow-count.png" alt="pic" width = "600px" height = "350px">
+    </div>
+
+      <div class="next">
+        <a href="analysis10.html">
+        <img src="../img/nextButton3.png" alt="next">
+        </a>
+      </div>
+
+      <div class="myStorynav" class="storynav">
+        <a href="../home.html#analysis" id="bullet1">
+        <img src="../img/timeBullet1.png"></a>
+        <a   href="analysis1.html" id="bullet2">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis2.html" id="bullet3">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis3.html" id="bullet4">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis4.html" id="bullet5">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis5.html" id="bullet6">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis6.html" id="bullet7">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis7.html" id="bullet8">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis8.html" id="bullet9">
+        <img src="../img/timeBullet1.png"></a>
+        <a class="active" href="analysis9.html" id="bullet10">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis10.html" id="bullet11">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis11.html" id="bullet12">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis12.html" id="bullet13">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis13.html" id="bullet14">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis14.html" id="bullet15">
+        <img src="../img/timeBullet1.png"></a>
+      </div>
+
+    </div>
+  </body>
+  <script language =javascript >
+
+  var i=0;
+  var arr=new Array();
+
+  arr[0]="../img/Fig 3.daily-journey-on-weekday-flow-count.png";
+  arr[1]="../img/Fig 3.1.daily-journey-on-weekend-flow-count.png";
+
+  function photochange1()
+  {
+      var photo=document.getElementById("photochange1");
+      if (i==arr.length-1)
+      {
+          i=0;
+      }
+      else
+      {
+          i+=1;
+      }
+      photo.src=arr[i];
+  }
+
+  setInterval("photochange1()",2000);
+
+  </script>
+
+
+</html>

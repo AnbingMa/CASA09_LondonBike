@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BICYCLE UNDER POST_COVID</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_analysis.css">
+    <link rel="icon" href="../img/LOGO1.png" type="image/x-icon"/>
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#home" class="logo">Bicycle & COVID-19</a>
+      <div class="logoimg">
+        <img src="../img/LOGO1.png" alt="logo"  width = "100px" height = "45px">
+      </div>
+
+      <ul class="nav">
+        <li> <a  href="../home.html">Home</a></li>
+        <li> <a class="active" href="../home.html#analysis">Analysis</a></li>
+        <li> <a href="../map.html">Map</a></li>
+        <!-- <li> <a href="#contact">Contact</a></li> -->
+      </ul>
+    </div>
+
+      <div class="next">
+        <a href="analysis7.html">
+        <img src="../img/nextButton3.png" alt="next">
+        </a>
+      </div>
+
+      <div class="myStorynav" class="storynav">
+        <a href="../home.html#analysis" id="bullet1">
+        <img src="../img/timeBullet1.png"></a>
+        <a   href="analysis1.html" id="bullet2">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis2.html" id="bullet3">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis3.html" id="bullet4">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis4.html" id="bullet5">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis5.html" id="bullet6">
+        <img src="../img/timeBullet1.png"></a>
+        <a class="active" href="analysis6.html" id="bullet7">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis7.html" id="bullet8">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis8.html" id="bullet9">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis9.html" id="bullet10">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis10.html" id="bullet11">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis11.html" id="bullet12">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis12.html" id="bullet13">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis13.html" id="bullet14">
+        <img src="../img/timeBullet1.png"></a>
+        <a href="analysis14.html" id="bullet15">
+        <img src="../img/timeBullet1.png"></a>
+      </div>
+
+	<div class="story-container">
+	  <div class="heading"><p>Bike Flow/Duration in 2019 vs 2020-2021</p></div>
+	  <div class="subheading"><p>Month Flow/duration 2019 vs 2020 vs 2021</p></div>
+	  <div class="content" id="content6">
+		<p>The overall size of the flow and duration increased from May to August, and decreased in wintertime. And the flow counts and using time are growing from 2019 to 2021.  </p>
+		<p>According to the first figure, there was a significant peak flow month from June to September,  as well as a significant duration peak from May to August, which indicates that many people prefer to choose biking in the summertime instead of other seasons, with some seasonal features. While in the first figure, we can see after the COVID pandemic, the green line shows over the red one, most of the blue one was the beneath, which means during the post-pandemic period, people prefer to bike, it shifted a daily ‘custom’.
+From the second figure, the strange peak in 2020-2021 May was significant, which was close to the first outburst of COVID-19. Also, we can see with the year growing, the green line(2021) shows higher above, which indicates people use bikes longer than before, they try to take bikes experiencing the long-distance trip.
+</p>
+<p>The reasons may be remote working policy, weather, covid lockdown, the purpose of UK government of zero-carbon emissions or else.</p>
+	  </div>
+	  <div id="img11-2"></div>
+	</div>
+	<div id="img11-2-1"></div>
+	  <div id="img11-2-2"></div>
+
+	<script type="text/javascript">
+
+Highcharts.chart("img11-2-1", {
+	chart: {
+        height: 280,
+       width: 470,
+       backgroundColor: false,
+      },
+
+    title: {
+        text: 'The month flow in 2019 vs 2020 vs 2021'
+    },
+
+
+    yAxis: { // Primary yAxis
+        labels: {
+            format: '{value}'
+        },
+        title: {
+            text: 'Month Flow counts'
+        }
+    },
+
+    xAxis: {
+        categories: ['03','04','05','06','07','08','09','10','11','12','01','02'
+],
+        labels: {
+          align: 'center',
+          x: 17,
+          y: 16
+        }
+    },
+
+    legend: {
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom'
+    },
+
+    tooltip: {
+      shared: true,
+      crosshairs: true
+    },
+
+    plotOptions: {
+      series: {
+        cursor: 'pointer',
+        className: 'popup-on-click',
+        marker: {
+          lineWidth: 1
+        }
+      }
+    },
+
+    series: [{
+        name: '2019-2020',
+	   data:[782716,878303,993733,991261,	1135610,	1038390,	952875,	839875,	719994,	583947,	701083,	554394
+],
+	    lineWidth: 2,
+     marker: {
+      radius: 3
+     },
+	   color: '#DE3163'
+    },
+
+
+    {
+        name: '2020-2021',
+        data: [546411,580442,1096865,1133515,	1146806,	834338,	1118131,832867,	745010,	577516,	401266,	499094
+],
+        lineWidth: 2,
+     marker: {
+      radius: 3
+     },
+        color: '#6495ED'
+    },
+
+	{
+        name: '2021',
+        data: [728376	,917975,	900566,	1155065	,1140988,1085177,1193989,1087294,926935,653404
+],
+        lineWidth: 2,
+     marker: {
+      radius: 3
+     },
+        color: '#9FE2BF '
+    },
+
+   ]
+
+
+
+
+});
+
+
+
+Highcharts.chart("img11-2-2", {
+	chart: {
+        height: 300,
+       width: 500,
+       backgroundColor: false,
+      },
+
+    title: {
+        text: 'The month duration in 2019 vs 2020 vs 2021'
+    },
+
+
+    yAxis: { // Primary yAxis
+        labels: {
+            format: '{value}'
+        },
+        title: {
+            text: 'Month Duration counts'
+        }
+    },
+
+    xAxis: {
+        categories: ['03','04','05','06','07','08','09','10','11','12','01','02'
+],
+        labels: {
+          align: 'center',
+          x: 17,
+          y: 16
+        }
+    },
+
+    legend: {
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom'
+    },
+
+    tooltip: {
+      shared: true,
+      crosshairs: true
+    },
+
+    plotOptions: {
+      series: {
+        cursor: 'pointer',
+        className: 'popup-on-click',
+        marker: {
+          lineWidth: 1
+        }
+      }
+    },
+
+    series: [{
+        name: '2019-2020',
+	   data:[844571460,	1125323340,1193484120,1273096980,1475905680,1414386780,1096192560,889996140,701826540,653570040,690196440,537151680
+
+],
+	    lineWidth: 2,
+     marker: {
+      radius: 3
+     },
+	   color: '#DE3163'
+    },
+
+
+    {
+        name: '2020-2021',
+        data: [664352760,	1314305100,	2793700560,	2253676860,	1800546240,	1213060020,	1510549440,	990966480,	1064559600,	782483700,	576487380,	795452040
+
+],
+        lineWidth: 2,
+     marker: {
+      radius: 3
+     },
+        color: '#6495ED'
+    },
+
+	{
+        name: '2021',
+        data: [1147197060	,1434576300,	1195044600,	1544813640,	1525712400,1438897200,1459974540,1253192160,973947600,753789780
+
+],
+        lineWidth: 2,
+     marker: {
+      radius: 3
+     },
+        color: '#9FE2BF '
+    },]
+
+
+
+
+});
+
+  </script>
+</html>

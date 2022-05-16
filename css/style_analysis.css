@@ -1,0 +1,397 @@
+
+/* .analysis{  width:100%;
+  height: 800px;
+	background-color: #fff;} */
+
+.story-container {
+	position: relative;
+	z-index: 2;
+	left: 50px;
+	height: 600px;
+	text-align: justify;
+	width: 30%;
+	font-weight: normal;
+	padding: 10px 20px;
+}
+
+
+
+.story-container .heading {
+  position: absolute;
+  top: 10%;
+  width: 200%;
+  height: 60px;
+  font-family: Abel, Arial;
+  font-size: 40px;
+  color: white;
+}
+
+.story-container .subheading {
+  position: absolute;
+  top: 24%;
+  width: 200%;
+  height: 40px;
+  font-family: Abel, Arial;
+  font-size: 30px;
+  color: #e8ce1f;
+}
+
+.story-container .content {
+  position: relative;
+  top: 160px;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  width: 490px;
+}
+
+
+
+#content1_1 {
+	top: 200px;
+    width: 1200px;
+    font-family: Abel, Arial;
+	line-height: 30px;
+	font-size: 18px;
+    color: 	white;
+}
+
+#content1-2 {
+	top: 0px;
+    width: 1100px;
+	line-height: normal;
+}
+
+#content2 {
+  top: 220px;
+}
+
+#content3{
+  top: 220px;
+  width: 460px;
+}
+
+#content4 {
+  top: 220px;
+  width: 460px;
+}
+/* .conten4 .p2{color:#A50202;} */
+
+#content5 {
+  top: 220px;
+}
+
+#content5-2 {
+  top: 220px;
+  width: 400px;
+}
+
+#content6 {
+  top: 220px;
+  width: 1200px;
+}
+
+#content6-2 {
+  top: 220px;
+  width: 400px;
+}
+
+#content7 {
+  top: 220px;
+  width: 650px;
+}
+
+#content8 {
+	top: 220px;
+  width: 780px;
+}
+
+#content9 {
+  top: 220px;
+  width: 1250px;
+}
+
+#content10 {
+  top: 220px;
+}
+#content11 {
+  top: 220px;
+  width: 550px;
+	left:700px
+}
+#content11-1 {
+  top: 220px;
+}
+
+#content11-2 {
+  top: 220px;
+}
+
+
+#img1_1 {
+  position: absolute;
+  z-index: 9;
+  top: 400px;
+  left: 20px;
+}
+#img1_2 {
+  position: absolute;
+  z-index: 9;
+  top: 400px;
+  left: 450px;
+}
+#img1_3 {
+  position: absolute;
+  z-index: 9;
+  top: 400px;
+  left: 880px;
+}
+
+
+
+
+#img2-1 {
+  position: absolute;
+  top: 180px;
+  left: 500px;
+  z-index: 1;
+}
+
+#img2-2 {
+  position: absolute;
+  top: 560px;
+  left: 640px;
+  padding-bottom: 20px;
+  z-index: 1;
+}
+
+#img3-1 {
+	position: absolute;
+  top: 220px;
+  left: 550px;
+  z-index:1;
+}
+.img3_title {
+	position: absolute;
+  top: 220px;
+  left: 550px;
+  z-index:1;
+}
+
+#img3-2 {
+  position: absolute;
+  top: 270px;
+  left: 820px;
+  z-index: 1;
+}
+
+#img4 {
+  position: absolute;
+  top: 160px;
+  left: 500px;
+  z-index: 1;
+}
+
+#img5 {
+  position: absolute;
+  top: 150px;
+  left: 600px;
+  z-index:1;
+}
+
+#img5-2 {
+  position: absolute;
+  top: 190px;
+  left: 450px;
+  z-index:1;
+}
+
+#container1 {
+  position: absolute;
+  top: 230px;
+  left: 480px;
+  z-index:9;
+}
+
+#img6-1 {
+  position: absolute;
+  top: 130px;
+  left: 460px;
+  z-index: -1;
+}
+
+#img6-2 {
+  position: absolute;
+  top: 220px;
+  left: 500px;
+  z-index:1;
+}
+
+#img7 {
+  position: absolute;
+  top: 200px;
+  left: 700px;
+  z-index:1;
+}
+.maptem{
+	position: relative;
+  top: -200px;
+  left: 700px;
+  z-index:1;}
+
+	.maptem p{
+color: #fff;}
+#img7_1 {
+  position: absolute;
+  top: 30px;
+  left: 510px;
+  z-index:1;
+}
+
+#img7-2 {
+  position: absolute;
+  top: 390px;
+  left: 650px;
+  z-index:1;
+}
+
+#img7-3 {
+  position: absolute;
+  top: 420px;
+  left: -30px;
+  z-index:1;
+}
+#img5 {
+  position: absolute;
+  top: 150px;
+  left: 600px;
+  z-index:1;
+}
+#img8 {
+  position: absolute;
+  top: 440px;
+  left: 80px;
+  z-index:1;
+}
+#img8-1 {
+  position: absolute;
+  top: 180px;
+  left: 850px;
+}
+
+#img8-2 {
+  position: absolute;
+  top: 450px;
+  left: 850px;
+}
+
+#img9 {
+  position: absolute;
+  z-index:-1;
+  top: 400px;
+  left: 100px;
+}
+
+#img11 {
+	position: absolute;
+	top: 180px;
+	left: 30px;
+	z-index: 1;
+}
+
+#img11-1 {
+  position: absolute;
+  top: 20px;
+  left: 230px;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+#img11-2 {
+  position: absolute;
+  top: 150px;
+  left: 120px;
+  z-index: 1;
+}
+
+#img11-2-1 {
+  position: absolute;
+  top: 470px;
+  left: 30px;
+  z-index: 1;
+}
+
+#img11-2-2 {
+  position: absolute;
+  top: 470px;
+  left: 650px;
+  z-index: 1;
+}
+
+
+/*--------------------------------------------------------------*/
+/* Photochange */
+/*--------------------------------------------------------------*/
+
+#photochange1 {
+  z-index:-1;
+  position: absolute;
+  top: 250px;
+  left: 700px;
+  opacity: 0.9;
+}
+
+#photochange2 {
+  position: absolute;
+  top: 250px;
+  left: 550px;
+  z-index:-1;
+}
+
+#photochange3 {
+  position: absolute;
+  top: 250px;
+  left: 650px;
+}
+
+#photochange4 {
+  position: absolute;
+  z-index:-1;
+  top: 120px;
+  left: 500px;
+  opacity: 0.9;
+}
+/* ………………………………………………………… */
+/* background change in different page */
+/* .img_background7{
+	position: absolute;
+  top: 160px;
+  left: 500px;
+ top:0px;
+ right:600px;
+  display:block;
+ background-color: #fff;
+z-index: 2；
+	padding: 10px 20px;} */
+
+	/* ^^^^^^^^^^^^^ */
+	/* another present through diffenent section in one page */
+	.section1,.section2,.section4,.section5,.section6,.section3,.section8,.section9,.section10,.section11,.section12,.section13,.section14{
+	  position: block;
+	  /* display: flex;
+	  justify-content: space-around;
+	  align-items: center;
+	  flex-wrap: wrap; */
+	  /* flex-direction: row; */
+		left:30px;
+	  width:100%;
+	  height: 750px;
+	}
+/*
+	.section3{
+		position:block;
+		left:30px;
+		  width:100%;
+		  height: 750px;
+		background-color:  #fff} */
