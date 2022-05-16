@@ -1,3 +1,3 @@
-## Welcome to GitHub Pages
+## Welcome to our website!
 
 Open the home page via the following link：https://anbingma.github.io/CASA09_LondonBike/home.html
